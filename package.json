@@ -1,0 +1,28 @@
+{
+  "name": "digitaloptometrist",
+  "version": "1.0.0",
+  "description": "Digital Optometrist helps you estimate your visual acuity from the comfort of your computer.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielChen1009/DigitalOptometrist.git"
+  },
+  "keywords": [
+    "optometrist",
+    "optometry",
+    "eyesight",
+    "myopia"
+  ],
+  "author": "Daniel Chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielChen1009/DigitalOptometrist/issues"
+  },
+  "homepage": "https://github.com/DanielChen1009/DigitalOptometrist#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
