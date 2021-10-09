@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calibration</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+    <script src="calibration.js">
+    </script>
+
+    <style>
+        .mycol {
+            padding: 50px;
+        }
+
+        .mycontainer {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .mybutton {
+            width: 50px;
+            height: 50px;
+            margin: 20px 0 20px 0;
+        }
+
+        .nextbutton {
+            width: 100px;
+            height: 50px;
+            margin: 20px 0 20px 0;
+        }
+
+        .row {
+            margin: 0;
+        }
+
+        .mytext {
+            padding: 50px;
+            width: 600px;
+            margin: auto
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container mycontainer">
+    <div class="row">
+        <div class="col-md-9 mycol">
+            <img id="card" src="cardtemplate.png" width="500px" height="auto">
+        </div>
+        <div class="col-md-3 mycol">
+            <button id="increase" class="mybutton" onclick="changeSize(-2)"> - </button>
+            <button id="decrease" class="mybutton" onclick="changeSize(+2)"> + </button>
+            <button id="next" class="nextbutton" onclick="nextPage()"> Next </button>
+        </div>
+    </div>
+    <div class="row">
+        <p class="mytext center">
+            In order to make this test more accurate, we need to conduct a little bit of calibration.
+            Place a credit, debit, id, or similar card up against the image on the left. Then use your arrow keys
+            or the buttons to the right labeled "+" and "-" to adjust the image of the card until it matches the
+            card you use. Once you are done, click next to continue.
+        </p>
+    </div>
+</div>
+
+
+</body>
+</html>

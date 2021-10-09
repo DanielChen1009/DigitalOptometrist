@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9QES7Y7L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-KE9QES7Y7L');
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .mybutton {
+            margin-top: 50px;
+            width: 100px;
+            height: 50px;
+        }
+
+        video {
+            display: none;
+        }
+
+        canvas {
+            margin-top: 20px;
+            border-color: black;
+            border-style: solid;
+        }
+
+        code {
+            font-weight: bold;
+        }
+
+        .res-circle {
+            /* (A) PERCENTAGE WIDTH & BORDER RADIUS */
+            width: 85%;
+            border-radius: 50%;
+
+            /* (B) BACKGROUND COLOR */
+            background: #bcd6ff;
+
+            margin-top: 20px;
+
+            /* (C) NECESSARY TO POSITION TEXT BLOCK */
+            line-height: 0;
+            position: relative;
+        }
+
+        /* (D) MATCH HEIGHT */
+        .res-circle::after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        /* (E) TEXT BLOCK */
+        .circle-txt {
+            font-size: 40px;
+            position: absolute;
+            bottom: 50%;
+            width: 100%;
+            text-align: center;
+            word-wrap: break-word;
+        }
+    </style>
+    <meta charset="UTF-8">
+
+    <title>Video Detector</title>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js">
+    </script>
+
+    <script src="ccv.js">
+    </script>
+
+    <script src="face.js">
+    </script>
+
+    <script src="videoDetector.js">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+    <script>
+        let session;
+        window.onload = init;
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 canvas">
+            <video id="video" width="300" height="100" autoplay autofocus></video>
+            <canvas id="canvas" width="640" height="480"></canvas>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <p id="instructions">
+                    Please position yourself such that your face is completely visible in the image.
+                    You can back up as much as you want, however, for more accurate results, it is
+                    recommended that you stay between 25 to 30 inches away from the computer.
+                    When you are ready to continue to the testing phase, just say
+                    "next" in a loud and clear voice or press the next button.
+                </p>
+            </div>
+            <div class="res-circle">
+                <div class="circle-txt">
+                    <code id="distance"></code>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <button id="nextbutton" class="mybutton" disabled onclick="window.location.href='../letter_testing/letter-testing.html';">
+                Next =>
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

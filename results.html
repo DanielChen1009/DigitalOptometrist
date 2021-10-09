@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9QES7Y7L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-KE9QES7Y7L');
+    </script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        html {
+            height: 100%;
+
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            background-image: url("Image1.png");
+        }
+
+        .center {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 33%;
+        }
+
+        .resultdisplay {
+            height: 200px;      /* equals max image height */
+            line-height: 200px;
+            width: 250px;
+            border-radius: 50%;
+            border: 2px solid black;
+            background-color: white;
+            text-align: center;
+        }
+
+        .wordsdisplay {
+            height: 100px;      /* equals max image height */
+            line-height: 0;
+            width: 600px;
+            border: 2px solid black;
+            background-color: white;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .resulttext {
+            font-size: 50px;
+        }
+
+        .recommendationdisplay {
+            height: 100px;      /* equals max image height */
+            line-height: 30px;
+            width: 700px;
+            border: 2px solid black;
+            background-color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .spanbackground {
+            background-image: url("Image6.png");
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+    </script>
+
+    <script src="./result.js">
+    </script>
+</head>
+<body>
+<div class="center">
+    <span class="wordsdisplay">
+        <p>
+            All done! Your result is:
+        </p>
+    </span>
+</div>
+<div class="center">
+    <span class="resultdisplay">
+        <code id="results" class="resulttext">
+        </code>
+    </span>
+</div>
+<div class="center">
+    <span class="recommendationdisplay">
+        <p id="recommendation">
+        </p>
+    </span>
+</div>
+</body>
+</html>
