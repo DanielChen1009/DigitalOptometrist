@@ -60,17 +60,23 @@ class LetterTester {
 
         recognition.onresult = function(event) {
             const current = event.resultIndex;
-            result = event.results[current][0].transcript;
-            result = result.trim();
-            let words = result.split(" ");
-            result = words[0];
+            for (let i = current; i < event.results.length; ++i) {
+                if (!event.results[i].isFinal) {
+                    result += event.results[i][0].transcript;
+                    let words = result.split(" ");
+                    result = words[0];
+                    result = result.trim();
+                }
+            }
             console.log(result);
         }
     }
 
     testLetters() {
-        let score = $("#score");
-        score.text(numCorrect + "/5");
+        let correct = $("#correct");
+        let incorrect = $("#incorrect")
+        correct.text(numCorrect + "/3");
+        incorrect.text(numTested - numCorrect + "/3");
         let element = $("#testing-letter");
         if (numTested === 3) {
             if (numCorrect > 1) {
@@ -79,7 +85,8 @@ class LetterTester {
                 currSize *= 0.5;
                 let actualSize = currSize * sizeMultiplier;
                 let subtendDist = actualSize * distMultiplier;
-                score.text(numCorrect + "/5");
+                correct.text(numCorrect + "/3");
+                incorrect.text(numCorrect + "/3");
                 console.log("Actual size: " + actualSize);
                 console.log("Subtending Distance in Feet: " + (subtendDist / 12));
                 console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
@@ -103,7 +110,6 @@ class LetterTester {
                 }
                 end = true;
             }
-
         }
         numTested++;
         let ind = Math.floor(Math.random() * 4);

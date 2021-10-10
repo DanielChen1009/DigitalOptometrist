@@ -1,0 +1,75 @@
+.screen {
+    margin: 0;
+    padding: 0;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabletext {
+    font-size: 80px;
+}
+
+.mytable {
+    border-spacing: 30px;
+    border-collapse: separate;
+}
+
+.nextbutton {
+    margin: 20px;
+    width: 20%;
+    height: 100px;
+    font-size: 20px
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.transform {
+    display: inline-block;
+}
+
+.letterdisplay {
+    width: 500px;
+    height: 500px;
+    line-height: 500px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-color: white;
+    text-align: center;
+}
+
+.myimage {
+    display: inline;
+    vertical-align: middle;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.nextcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centeritems {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
