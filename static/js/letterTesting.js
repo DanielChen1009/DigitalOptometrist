@@ -8,7 +8,7 @@ let restart = true;
 const letters = ["Right", "Up", "Left", "Down"];
 const wordCalib = [
     [ "right", "bright", "wright", "write", "alright"],
-    ["top", "pop", "hop", "up", "IHOP", "off"],
+    ["top", "pop", "hop", "up", "IHOP", "off", "op"],
     ["left", "last", "laughed", "loved", "Lyft", "laugh", "Loft", "lost"],
     ["down", "dumb", "tongue", "thumb", "done", "dong"]
 ];
@@ -23,6 +23,7 @@ const distFromCamera = sessionStorage.getItem("DistFromCamera");
 try {
     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
+    recognition.interimResults = true;
 }
 catch(e) {
     console.error(e);
@@ -60,14 +61,32 @@ class LetterTester {
 
         recognition.onresult = function(event) {
             const current = event.resultIndex;
+            let finalResult = null;
+            let interimResult;
             for (let i = current; i < event.results.length; ++i) {
-                if (!event.results[i].isFinal) {
-                    result += event.results[i][0].transcript;
-                    let words = result.split(" ");
-                    result = words[0];
-                    result = result.trim();
-                }
+                // setTimeout(() => {
+                    if (!event.results[i].isFinal) {
+                        if (event.results[i][0].confidence < 0.5) continue;
+                        console.log(event);
+                        interimResult = event.results[i][0].transcript;
+                        // console.log(event.results[i]);
+                        let words = interimResult.split(" ");
+                        interimResult = words[0];
+                        interimResult = interimResult.trim();
+                        let inArray = false;
+                        for (let j = 0; j < wordCalib.length; ++j) {
+                            for (let k = 0; k < wordCalib[j].length; ++k) {
+                                if (interimResult === wordCalib[j][k]) {
+                                    inArray = true;
+                                }
+                            }
+                        }
+                        // console.log(interimResult);
+                        if (inArray && !finalResult) finalResult = interimResult;
+                    }
+                // }, 100);
             }
+            result = finalResult;
             console.log(result);
         }
     }
@@ -126,22 +145,23 @@ class LetterTester {
         // console.log(letter);
         let myInterval = setInterval(function () {
             let num = letterTester.testDirection(ind);
-            if(result && num === 2) {
-                restart = false;
-                recognition.stop();
-                msg.text = "Please try again.";
-                window.speechSynthesis.speak(msg);
-                msg.text = null;
-                result = null;
-                console.log("Not in dictionary.")
-                setTimeout(() => {
-                    restart = true;
-                    recognition.start();
-                }, 1000)
-            }
+            // if(result && num === 2) {
+            //     restart = false;
+            //     recognition.stop();
+            //     msg.text = "Please try again.";
+            //     window.speechSynthesis.speak(msg);
+            //     msg.text = null;
+            //     result = null;
+            //     console.log("Not in dictionary.")
+            //     setTimeout(() => {
+            //         restart = true;
+            //         recognition.start();
+            //     }, 1000)
+            // }
 
             if (result && (num === 1 || num === 0)) {
                 clearInterval(myInterval);
+                recognition.stop();
                 letterTester.testLetters();
                 result = null;
             }
