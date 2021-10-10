@@ -6,65 +6,122 @@
     <script src="/js/calibration.js"> </script>
 
     <style>
+        html {
+            height: 80%;
+        }
+        body {
+            height: 100%
+        }
+
         .mycol {
-            padding: 50px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .mycontainer {
             margin: 0;
             padding: 0;
             width: 100%;
+            height: 100%
         }
 
         .mybutton {
-            width: 50px;
-            height: 50px;
-            margin: 20px 0 20px 0;
+            width: 200px;
+            height: 200px;
+            font-size: 100px;
         }
 
         .nextbutton {
             width: 100px;
             height: 50px;
-            margin: 20px 0 20px 0;
+            margin: 20px 0 0 0;
         }
 
-        .row {
+        .cardrow {
             margin: 0;
+            height: 70%;
+        }
+
+        .instructionrow{
+            margin: 0;
+            height: 30%;
         }
 
         .mytext {
-            padding: 50px;
+            padding: 20px;
             width: 600px;
-            margin: auto
+            margin: auto;
+            background-color: white;
+            opacity: 0.6;
         }
 
         .center {
+            text-align: center;
+        }
+
+        div.mytext p {
+            font-weight: bold;
+            color: #000000;
+        }
+
+        figure {
+            display: inline-block; /* Here !!! */
+            position: relative;
+            margin: 0;
+        }
+
+        figcaption{
+            position: absolute;
+            left: 25%;
+            right: 25%;
+            top: 40%;
+            bottom: 40%;
+            color: black;
+            padding: 4px;
+            font-size: 17px;
+            line-height: 18px;
+        }
+
+        .caption {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
     </style>
 
 </head>
 <body>
-<%- include('../partials/header'); %>
+<%- include('../partials/header', {title: "Calibrating Your Optometrist"}); %>
 
 <div class="container mycontainer">
-    <div class="row">
-        <div class="col-md-9 mycol">
-            <img id="card" src="images/cardtemplate.png" width="500px" height="auto">
+    <div class="row cardrow">
+        <div class="col-md-3 mycol">
+            <button id="decrease" class="mybutton" onclick="changeSize(-2)"> - </button>
+        </div>
+        <div class="col-md-6 mycol">
+            <figure>
+                <img alt="Card" id="card" src="images/cardtemplate.png" width="500px" height="auto">
+                <figcaption> <div class="caption"> Place card here and fit silhouette to the card </div></figcaption>
+            </figure>
         </div>
         <div class="col-md-3 mycol">
-            <button id="increase" class="mybutton" onclick="changeSize(-2)"> - </button>
-            <button id="decrease" class="mybutton" onclick="changeSize(+2)"> + </button>
-            <button id="next" class="nextbutton" onclick="nextPage()"> Next </button>
+            <button id="increase" class="mybutton" onclick="changeSize(+2)"> + </button>
         </div>
     </div>
-    <div class="row">
-        <p class="mytext center">
-            In order to make this test more accurate, we need to conduct a little bit of calibration.
-            Place a credit, debit, id, or similar card up against the image on the left. Then use your arrow keys
-            or the buttons to the right labeled "+" and "-" to adjust the image of the card until it matches the
-            card you use. Once you are done, click next to continue.
-        </p>
+    <div class="row instructionrow">
+        <div class="mytext">
+            <p class="center">
+                In order to make this test more accurate, we need to conduct a little bit of calibration.
+                Place a credit, debit, id, or similar card up against the image on the left. Then use your arrow keys
+                or the buttons to the right labeled "+" and "-" to adjust the image of the card until it matches the
+                card you use. Once you are done, click Next to continue. <br>
+                <button id="next" class="nextbutton" onclick="nextPage()"> Next </button>
+            </p>
+        </div>
+
     </div>
 </div>
 
