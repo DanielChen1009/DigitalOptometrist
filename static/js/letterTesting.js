@@ -16,9 +16,11 @@ const distMultiplier = 1 / (2 * Math.tan(0.0007272205216625));
 const sizeMultiplier = sessionStorage.getItem("ratio");
 let numCorrect = 0;
 let numTested = 0;
-let currSize = 300;
+let currSize = 250;
 let end = false;
 const distFromCamera = sessionStorage.getItem("DistFromCamera");
+let ind;
+let myInterval;
 
 try {
     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -37,12 +39,36 @@ function init() {
     letterTester.testLetters();
     recognition.start();
     console.log(sessionStorage.getItem("DistFromCamera"));
+    letterTester.createKeyListener()
 }
 
 class LetterTester {
     constructor() {
     }
 
+    createKeyListener() {
+        document.addEventListener("keydown", (event) => {
+            let num = -1;
+            if (event.code === "ArrowLeft") {
+                num = this.testDirection(ind, "left");
+            }
+            if (event.code === "ArrowDown") {
+                num = this.testDirection(ind, "down");
+            }
+            if (event.code === "ArrowRight") {
+                num = this.testDirection(ind, "right");
+            }
+            if (event.code === "ArrowUp") {
+                num = this.testDirection(ind, "up");
+            }
+            if (num === 1 || num === 0) {
+                clearInterval(myInterval);
+                recognition.stop();
+                letterTester.testLetters();
+                result = null;
+            }
+        });
+    }
     initializeRecognition() {
         recognition.onstart = function() {
             console.log("Speech detection started")
@@ -131,7 +157,7 @@ class LetterTester {
             }
         }
         numTested++;
-        let ind = Math.floor(Math.random() * 4);
+        ind = Math.floor(Math.random() * 4);
         if (ind === prev) {
             ind++;
             ind %= 4;
@@ -143,8 +169,8 @@ class LetterTester {
         element.attr("width", currSize);
         element.attr("height", currSize);
         // console.log(letter);
-        let myInterval = setInterval(function () {
-            let num = letterTester.testDirection(ind);
+        myInterval = setInterval(function () {
+            let num = letterTester.testDirection(ind, result);
             // if(result && num === 2) {
             //     restart = false;
             //     recognition.stop();
@@ -168,9 +194,9 @@ class LetterTester {
         }, 50);
     }
 
-    testDirection(ind) {
+    testDirection(ind, word) {
         for (let i = 0; i < wordCalib[ind].length; i++) {
-            if (result === wordCalib[ind][i]) {
+            if (word === wordCalib[ind][i]) {
                 console.log("Correct!");
                 numCorrect++;
                 return 0;
@@ -179,7 +205,7 @@ class LetterTester {
         for (let i = 0; i < 4; i++) {
             if (i === ind) continue;
             for (let j = 0; j < wordCalib[ind].length; j++) {
-                if (result === wordCalib[i][j]) {
+                if (word === wordCalib[i][j]) {
                     console.log("Incorrect!");
                     return 1;
                 }
