@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9QES7Y7L"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-KE9QES7Y7L');
-    </script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <meta charset="UTF-8">
-
-    <title>Digital Optometrist</title>
-
+    <%- include('../partials/head'); %>
     <style>
         .content {
             margin-top: 40px;
@@ -34,11 +20,12 @@
     </style>
 </head>
 <body>
+
 <div class="container">
     <h1 class="title">Digital Optometrist</h1>
     <div class="row">
         <div class="col-md-6 content">
-            <img src="static/letters/Right-E.svg">
+            <img src="/images/letters/Right-E.svg" alt="E image">
         </div>
         <div class="col-md-6 content">
             <p id="instructions">
@@ -57,13 +44,12 @@
                 This will decrease the size of the letter after which, you will need to repeat the process until
                 you fail a level twice in a row.
             </p>
-            <button id="nextbutton" class="nextbutton" onclick="window.location.href='./calibrations/calibration.html';">
+            <button id="nextbutton" class="nextbutton" onclick="window.location.href='/calibrations';">
                 Next
             </button>
         </div>
     </div>
-
-
 </div>
+
 </body>
 </html>

@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9QES7Y7L"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-KE9QES7Y7L');
-    </script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <%- include('../partials/head'); %>
     <style>
         .mybutton {
             margin-top: 50px;
@@ -65,24 +55,17 @@
             word-wrap: break-word;
         }
     </style>
-    <meta charset="UTF-8">
 
-    <title>Video Detector</title>
     <script src="https://webrtc.github.io/adapter/adapter-latest.js">
     </script>
 
-    <script src="ccv.js">
+    <script src="js/ccv.js">
     </script>
 
-    <script src="face.js">
+    <script src="js/face.js">
     </script>
 
-    <script src="videoDetector.js">
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous">
+    <script src="js/videoDetector.js">
     </script>
 
     <script>
@@ -119,7 +102,7 @@
         <div class="col-md-6">
         </div>
         <div class="col-md-6">
-            <button id="nextbutton" class="mybutton" disabled onclick="window.location.href='../letter_testing/letter-testing.html';">
+            <button id="nextbutton" class="mybutton" disabled onclick="window.location.href='../testing';">
                 Next =>
             </button>
         </div>

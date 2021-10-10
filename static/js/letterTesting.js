@@ -114,7 +114,7 @@ class LetterTester {
         prev = ind;
         let letter = letters[ind];
 
-        element.attr("src", "./letters/" + letter + "-E.svg");
+        element.attr("src", "images/letters/" + letter + "-E.svg");
         element.attr("width", currSize);
         element.attr("height", currSize);
         // console.log(letter);

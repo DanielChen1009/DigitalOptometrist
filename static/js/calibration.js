@@ -47,6 +47,6 @@ function changeSize(change) {
 
 function nextPage() {
     let ratio = 3.37/currWidth;
-    sessionStorage.setItem("ratio", ratio.toString())
-    window.location.href='../video_detection/video-detector.html'
+    sessionStorage.setItem("ratio", ratio.toString());
+    window.location.href='/videodetector';
 }

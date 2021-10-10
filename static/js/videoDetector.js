@@ -12,7 +12,7 @@ try {
         const current = event.resultIndex;
         let result = event.results[current][0].transcript;
         if (result === "next") {
-            window.location.href = "../letter_testing/letter-testing.html";
+            window.location.href = "../letter_testing/letter-testing.ejs";
         }
         console.log(result);
     };

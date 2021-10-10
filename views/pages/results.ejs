@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9QES7Y7L"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-KE9QES7Y7L');
-    </script>
-
-    <meta charset="UTF-8">
-    <title>Title</title>
-
+    <%- include('../partials/head'); %>
+    <script src="js/result.js"></script>
     <style>
         html {
             height: 100%;
@@ -70,16 +59,9 @@
         }
 
         .spanbackground {
-            background-image: url("static/Image6.png");
+            background-image: url("images/Image6.png");
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous">
-    </script>
-
-    <script src="./result.js">
-    </script>
 </head>
 <body>
 <div class="center">
@@ -97,8 +79,7 @@
 </div>
 <div class="center">
     <span class="recommendationdisplay">
-        <p id="recommendation">
-        </p>
+        <p id="recommendation"></p>
     </span>
 </div>
 </body>

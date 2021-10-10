@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9QES7Y7L"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-KE9QES7Y7L');
-    </script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-    <meta charset="UTF-8">
-    <title>Letter Testing</title>
-
+    <%- include('../partials/head'); %>
     <style>
         .screen {
             margin: 0;
@@ -78,14 +64,7 @@
         }
     </style>
 
-    <script src="letterTesting.js">
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous">
-    </script>
-
+    <script src="js/letterTesting.js"></script>
 </head>
 <body>
 <div class="center">
@@ -100,7 +79,7 @@
             </span>
         </div>
         <div class="col-md-2">
-            <button id="nextbutton" class="nextbutton" disabled onclick="window.location.href='../results.html';">
+            <button id="nextbutton" class="nextbutton" disabled onclick="window.location.href='/results';">
                 Next
             </button>
         </div>

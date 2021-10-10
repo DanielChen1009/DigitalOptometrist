@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Calibration</title>
+    <%- include('../partials/head'); %>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous">
-    </script>
-
-    <script src="calibration.js">
-    </script>
+    <script src="/js/calibration.js"> </script>
 
     <style>
         .mycol {
@@ -56,7 +48,7 @@
 <div class="container mycontainer">
     <div class="row">
         <div class="col-md-9 mycol">
-            <img id="card" src="cardtemplate.png" width="500px" height="auto">
+            <img id="card" src="images/cardtemplate.png" width="500px" height="auto">
         </div>
         <div class="col-md-3 mycol">
             <button id="increase" class="mybutton" onclick="changeSize(-2)"> - </button>
