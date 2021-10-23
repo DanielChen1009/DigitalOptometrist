@@ -22,7 +22,8 @@
     margin: 20px;
     width: 20%;
     height: 100px;
-    font-size: 20px
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 html {
