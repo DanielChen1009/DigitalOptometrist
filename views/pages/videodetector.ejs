@@ -9,6 +9,11 @@
             height: 50px;
         }
 
+        .buttondiv {
+            display:flex;
+            justify-content: right;
+        }
+
         video {
             display: none;
         }
@@ -25,7 +30,7 @@
 
         .res-circle {
             /* (A) PERCENTAGE WIDTH & BORDER RADIUS */
-            width: 85%;
+            width: 70%;
             border-radius: 50%;
 
             /* (B) BACKGROUND COLOR */
@@ -47,7 +52,7 @@
 
         /* (E) TEXT BLOCK */
         .circle-txt {
-            font-size: 40px;
+            font-size: 30px;
             position: absolute;
             bottom: 50%;
             width: 100%;
@@ -77,7 +82,7 @@
 <%- include('../partials/header', {title: "Getting Your Distance"}); %>
 
 <div class="container">
-    <div class="row">
+    <div class="row" style="height: 80%">
         <div class="col-md-8 canvas">
             <video id="video" width="300" height="100" autoplay autofocus></video>
             <canvas id="canvas" width="640" height="480"></canvas>
@@ -97,15 +102,11 @@
                     <code id="distance"></code>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-            <button id="nextbutton" class="mybutton" disabled onclick="window.location.href='../testing';">
-                Next =>
-            </button>
+            <div class="buttondiv">
+                <button id="nextbutton" class="mybutton" disabled onclick="window.location.href='../testing';">
+                    Next =>
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -37,7 +37,7 @@ function init() {
     letterTester = new LetterTester();
     letterTester.initializeRecognition();
     letterTester.testLetters();
-    recognition.start();
+    // recognition.start();
     console.log(sessionStorage.getItem("DistFromCamera"));
     letterTester.createKeyListener()
 }
@@ -61,14 +61,30 @@ class LetterTester {
             if (event.code === "ArrowUp") {
                 num = this.testDirection(ind, "up");
             }
-            if (num === 1 || num === 0) {
-                clearInterval(myInterval);
-                recognition.stop();
-                letterTester.testLetters();
-                result = null;
-            }
+            result = "foo";
+            this.handleInput(num);
+            result = null;
         });
     }
+
+    handleInput(num) {
+        if (result && num === 0) {
+            clearInterval(myInterval);
+            // recognition.stop();
+            letterTester.testLetters();
+            result = null;
+        } else if (result && num === 1) {
+            clearInterval(myInterval);
+            let actualSize = currSize * sizeMultiplier;
+            let subtendDist = actualSize * distMultiplier;
+            let element = $("#testing-letter");
+            element.attr("src", null);
+            $("#nextbutton").prop("disabled", false);
+            sessionStorage.setItem("result", subtendDist.toString());
+            result = null;
+        }
+    }
+
     initializeRecognition() {
         recognition.onstart = function() {
             console.log("Speech detection started")
@@ -76,7 +92,7 @@ class LetterTester {
 
         recognition.onend = function() {
             console.log("Speech detection stopped")
-            if(restart) recognition.start();
+            // if(restart) recognition.start();
         }
 
         recognition.onerror = function(event) {
@@ -120,40 +136,22 @@ class LetterTester {
     testLetters() {
         let correct = $("#correct");
         let incorrect = $("#incorrect")
-        correct.text(numCorrect + "/3");
-        incorrect.text(numTested - numCorrect + "/3");
+        correct.text(numCorrect + "/5");
+        incorrect.text(numTested - numCorrect + "/5");
         let element = $("#testing-letter");
-        if (numTested === 3) {
-            if (numCorrect > 1) {
+        if (numTested === 5) {
+            if (numCorrect > 3) {
                 numTested = 0;
                 numCorrect = 0;
-                currSize *= 0.5;
+                currSize *= 0.75;
                 let actualSize = currSize * sizeMultiplier;
                 let subtendDist = actualSize * distMultiplier;
-                correct.text(numCorrect + "/3");
-                incorrect.text(numCorrect + "/3");
+                correct.text(numCorrect + "/5");
+                incorrect.text(numCorrect + "/5");
                 console.log("Actual size: " + actualSize);
                 console.log("Subtending Distance in Feet: " + (subtendDist / 12));
                 console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
                 console.log("Passed Level")
-                end = false;
-            } else {
-                numTested = 0;
-                numCorrect = 0;
-                currSize *= 1.25;
-                let actualSize = currSize * sizeMultiplier;
-                let subtendDist = actualSize * distMultiplier;
-                console.log("Actual size: " + actualSize);
-                console.log("Subtending Distance in Feet: " + (subtendDist / 12));
-                console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
-                console.log("Failed Level");
-                if (end) {
-                    element.attr("src", null);
-                    $("#nextbutton").prop("disabled", false);
-                    sessionStorage.setItem("result", subtendDist.toString());
-                    return;
-                }
-                end = true;
             }
         }
         numTested++;
@@ -184,13 +182,7 @@ class LetterTester {
             //         recognition.start();
             //     }, 1000)
             // }
-
-            if (result && (num === 1 || num === 0)) {
-                clearInterval(myInterval);
-                recognition.stop();
-                letterTester.testLetters();
-                result = null;
-            }
+            letterTester.handleInput(num);
         }, 50);
     }
 

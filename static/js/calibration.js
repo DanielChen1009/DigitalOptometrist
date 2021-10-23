@@ -1,5 +1,5 @@
 window.onload = init;
-let currWidth = 500;
+let currWidth = 400;
 let increaseTimer;
 let decreaseTimer;
 
