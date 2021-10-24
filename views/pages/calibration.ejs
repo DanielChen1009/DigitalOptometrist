@@ -27,17 +27,31 @@
             height: 100%
         }
 
+        .mybutton:hover {
+            background-color: darkgray;
+        }
+
         .mybutton {
-            width: 200px;
-            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            padding-bottom: 20px;
+            width: 80px;
+            height: 80px;
             font-size: 100px;
+            border-color: darkblue;
+            border-width: 5px;
+            margin-right: 22px;
+            margin-left: 22px;
         }
 
         .nextbutton {
-            width: 100px;
-            height: 50px;
+            width: 200px;
+            height: 100px;
             margin: 20px 0 0 0;
             font-weight: bolder;
+            font-size: 30px;
             opacity: 0.9;
         }
 
@@ -63,6 +77,12 @@
             text-align: center;
         }
 
+        .flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         div.mytext p {
             font-weight: bold;
             color: #000000;
@@ -72,6 +92,7 @@
             display: inline-block; /* Here !!! */
             position: relative;
             margin: 0;
+            margin-bottom: 10px;
         }
 
         figcaption{
@@ -90,7 +111,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
+        }
+        .fullwidth{
+            display:inline-block;
         }
     </style>
 
@@ -100,30 +123,28 @@
 
 <div class="container mycontainer">
     <div class="row cardrow">
-        <div class="col-md-3 mycol">
-            <button id="decrease" class="mybutton" onclick="changeSize(-2)"> - </button>
+        <div class="col-md-6 mycol">
+            <img src="images/Instruction-second.png" width="450px">
         </div>
         <div class="col-md-6 mycol">
-            <figure>
-                <img alt="Card" id="card" src="images/cardtemplate.png" width="400px" height="auto">
-                <figcaption> <div class="caption"> Place card here and fit silhouette to the card </div></figcaption>
-            </figure>
-        </div>
-        <div class="col-md-3 mycol">
-            <button id="increase" class="mybutton" onclick="changeSize(+2)"> + </button>
-        </div>
-    </div>
-    <div class="row instructionrow">
-        <div class="mytext">
-            <p class="center">
-                In order to make this test more accurate, we need to conduct a little bit of calibration.
-                Place a credit, debit, id, or similar card up against the image on the left. Then use your arrow keys
-                or the buttons to the right labeled "+" and "-" to adjust the image of the card until it matches the
-                card you use. Once you are done, click Next to continue. <br>
-                <button id="next" class="nextbutton" onclick="nextPage()"> NEXT </button>
-            </p>
+            <div class="fullwidth">
+                <figure>
+                    <img alt="Card" id="card" src="images/cardtemplate.png" width="400px" style="margin-top: 40px;" height="auto">
+                    <figcaption> <div class="caption"> Place card here and fit silhouette to the card </div></figcaption>
+                </figure>
+                <div class="flex">
+                    <button id="decrease" class="mybutton" onclick="changeSize(-2)"> - </button>
+                    <button id="increase" class="mybutton" onclick="changeSize(+2)"> + </button>
+                </div>
         </div>
 
+    </div>
+    <div class="row instructionrow">
+        <div class="col-md-12 mycol" style="margin-top:50px">
+            <button id="next" class="nextbutton" onclick="nextPage()">
+                NEXT
+            </button>
+        </div>
     </div>
 </div>
 
