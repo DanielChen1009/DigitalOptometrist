@@ -140,8 +140,8 @@ class LetterTester {
     testLetters() {
         let correct = $("#correct");
         let incorrect = $("#incorrect")
-        correct.text(numCorrect + "/5");
-        incorrect.text(numTested - numCorrect + "/5");
+        correct.text(numCorrect + "/4");
+        incorrect.text(numTested - numCorrect + "/2");
         let element = $("#testing-letter");
         if (numCorrect > 3) {
             numTested = 0;
@@ -150,8 +150,8 @@ class LetterTester {
             currSize *= 0.75;
             let actualSize = currSize * sizeMultiplier;
             let subtendDist = actualSize * distMultiplier;
-            correct.text(numCorrect + "/5");
-            incorrect.text(numIncorrect + "/5");
+            correct.text(numCorrect + "/4");
+            incorrect.text(numIncorrect + "/2");
             console.log("Actual size: " + actualSize);
             console.log("Subtending Distance in Feet: " + (subtendDist / 12));
             console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
