@@ -5,6 +5,7 @@ let prev = -1;
 let letterTester;
 let msg = new SpeechSynthesisUtterance();
 let restart = true;
+let numIncorrect = 0;
 const letters = ["Right", "Up", "Left", "Down"];
 const wordCalib = [
     [ "right", "bright", "wright", "write", "alright"],
@@ -73,15 +74,18 @@ class LetterTester {
             // recognition.stop();
             letterTester.testLetters();
             result = null;
-        } else if (result && num === 1) {
+        } else if (result && num === 1 && numIncorrect === 1) {
             clearInterval(myInterval);
             let actualSize = currSize * sizeMultiplier;
             let subtendDist = actualSize * distMultiplier;
-            let element = $("#testing-letter");
-            element.attr("src", null);
-            $("#nextbutton").prop("disabled", false);
             sessionStorage.setItem("result", subtendDist.toString());
             result = null;
+            window.location.href='/results';
+        } else if (result && num === 1 && numIncorrect === 0) {
+            clearInterval(myInterval);
+            letterTester.testLetters();
+            result = null;
+            numIncorrect++;
         }
     }
 
@@ -139,20 +143,19 @@ class LetterTester {
         correct.text(numCorrect + "/5");
         incorrect.text(numTested - numCorrect + "/5");
         let element = $("#testing-letter");
-        if (numTested === 5) {
-            if (numCorrect > 3) {
-                numTested = 0;
-                numCorrect = 0;
-                currSize *= 0.75;
-                let actualSize = currSize * sizeMultiplier;
-                let subtendDist = actualSize * distMultiplier;
-                correct.text(numCorrect + "/5");
-                incorrect.text(numCorrect + "/5");
-                console.log("Actual size: " + actualSize);
-                console.log("Subtending Distance in Feet: " + (subtendDist / 12));
-                console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
-                console.log("Passed Level")
-            }
+        if (numCorrect > 3) {
+            numTested = 0;
+            numCorrect = 0;
+            numIncorrect = 0;
+            currSize *= 0.75;
+            let actualSize = currSize * sizeMultiplier;
+            let subtendDist = actualSize * distMultiplier;
+            correct.text(numCorrect + "/5");
+            incorrect.text(numIncorrect + "/5");
+            console.log("Actual size: " + actualSize);
+            console.log("Subtending Distance in Feet: " + (subtendDist / 12));
+            console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
+            console.log("Passed Level")
         }
         numTested++;
         ind = Math.floor(Math.random() * 4);
