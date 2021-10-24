@@ -13,74 +13,11 @@
             height: 100%
         }
 
-        .mycol {
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
         .mycontainer {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%
-        }
-
-        .mybutton:hover {
-            background-color: darkgray;
-        }
-
-        .mybutton {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            padding-bottom: 20px;
-            width: 80px;
-            height: 80px;
-            font-size: 100px;
-            border-color: darkblue;
-            border-width: 5px;
-            margin-right: 22px;
-            margin-left: 22px;
-        }
-
-        .nextbutton {
-            width: 200px;
-            height: 100px;
-            margin: 20px 0 0 0;
-            font-weight: bolder;
-            font-size: 30px;
-            opacity: 0.9;
-        }
-
-        .cardrow {
-            margin: 0;
-            height: 70%;
-        }
-
-        .instructionrow{
-            margin: 0;
-            height: 30%;
-        }
-
-        .mytext {
-            padding: 20px;
-            width: 600px;
-            margin: auto;
-            background-color: white;
-            opacity: 0.6;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .flex {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
         }
 
         div.mytext p {
@@ -95,7 +32,7 @@
             margin-bottom: 10px;
         }
 
-        figcaption{
+        figcaption {
             position: absolute;
             left: 25%;
             right: 25%;
@@ -112,9 +49,6 @@
             justify-content: center;
             align-items: center;
         }
-        .fullwidth{
-            display:inline-block;
-        }
     </style>
 
 </head>
@@ -122,26 +56,26 @@
 <%- include('../partials/header', {title: "Calibrating Your Optometrist"}); %>
 
 <div class="container mycontainer">
-    <div class="row cardrow">
-        <div class="col-md-6 mycol">
-            <img src="images/Instruction-second.png" width="450px">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Calibrate your screen so that we can accurately display the testing materials.</h1>
         </div>
-        <div class="col-md-6 mycol">
-            <div class="fullwidth">
-                <figure>
-                    <img alt="Card" id="card" src="images/cardtemplate.png" width="400px" style="margin-top: 40px;" height="auto">
-                    <figcaption> <div class="caption"> Place card here and fit silhouette to the card </div></figcaption>
-                </figure>
-                <div class="flex">
-                    <button id="decrease" class="mybutton" onclick="changeSize(-2)"> - </button>
-                    <button id="increase" class="mybutton" onclick="changeSize(+2)"> + </button>
-                </div>
-        </div>
-
     </div>
-    <div class="row instructionrow">
-        <div class="col-md-12 mycol" style="margin-top:50px">
-            <button id="next" class="nextbutton" onclick="nextPage()">
+    <div class="row">
+        <div class="col-md-12">
+            <figure class="center-block">
+                <img alt="Card" id="card" class="center-block" src="images/cardtemplate.png" width="400px" height="auto" />
+                <figcaption class="center-block">
+                    <div class="caption">
+                        Place a standard sized ID/credit card up against this frame and use up/down keys to match the sizes.
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button id="next" class="btn btn-primary center-block" onclick="nextPage()">
                 NEXT
             </button>
         </div>

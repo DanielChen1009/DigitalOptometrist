@@ -1,10 +1,48 @@
+<style>
+    .breadcrumb {
+        margin-bottom: 0;
+        font-size: 80%;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    .container-fluid {
+        background-color: #3377aa;
+    }
+
+    .navbar-text {
+        color: white !important;
+        font-size: 120%;
+    }
+
+    .navbar-right {
+        font-size: 80%;
+    }
+</style>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header" style="border-right: 3px black solid">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="images/logo.png" style="height:300%;margin-top:-7%;" />
-            </a>
+        <div class="navbar-header">
+            <p class="navbar-text">Digital Optometrist</p>
         </div>
-        <p class="navbar-text navbar-left" style="margin: 10px 10px 0 10px; font-size: 200%;font-family: 'Academy Engraved LET',serif"><%= title %></p>
-    </div><!-- /.container-fluid -->
+    </div>
+    <ol class="breadcrumb">
+        <li>
+            Home
+        </li>
+        <li>
+            Screen calibration
+        </li>
+        <li>
+            Distance calibration
+        </li>
+        <li>
+            Exam
+        </li>
+        <li>
+            Results
+        </li>
+    </ol>
 </nav>
