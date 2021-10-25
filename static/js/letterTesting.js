@@ -13,7 +13,7 @@ const wordCalib = [
     ["left", "last", "laughed", "loved", "Lyft", "laugh", "Loft", "lost"],
     ["down", "dumb", "tongue", "thumb", "done", "dong"]
 ];
-const distMultiplier = 1 / (2 * Math.tan(0.0007272205216625));
+const distMultiplier = 1 / Math.tan(0.0007272205216625);
 const sizeMultiplier = sessionStorage.getItem("ratio");
 let numCorrect = 0;
 let numTested = 0;
@@ -38,8 +38,6 @@ function init() {
     letterTester = new LetterTester();
     letterTester.initializeRecognition();
     letterTester.testLetters();
-    // recognition.start();
-    console.log(sessionStorage.getItem("DistFromCamera"));
     letterTester.createKeyListener()
 }
 
@@ -169,7 +167,7 @@ class LetterTester {
         element.attr("src", "images/letters/" + letter + "-E.svg");
         element.attr("width", currSize);
         element.attr("height", currSize);
-        // console.log(letter);
+        console.log(currSize * sizeMultiplier);
         myInterval = setInterval(function () {
             let num = letterTester.testDirection(ind, result);
             // if(result && num === 2) {
