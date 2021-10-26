@@ -36,9 +36,9 @@ function convertToDiopters() {
         let diff = conversion[i - 1][1] - conversion[i][1];
         if (ratio <= fir && ratio > sec) {
             if (ratio <= fir + diff) {
-                return conversion[i - 1][1];
+                return conversion[i - 1][1] * 2;
             } else {
-                return conversion[i][1];
+                return conversion[i][1] * 2;
             }
         }
     }
