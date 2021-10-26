@@ -13,7 +13,7 @@ const wordCalib = [
     ["left", "last", "laughed", "loved", "Lyft", "laugh", "Loft", "lost"],
     ["down", "dumb", "tongue", "thumb", "done", "dong"]
 ];
-const distMultiplier = 1 / Math.tan(0.0007272205216625);
+const distMultiplier = 1 / (2 * Math.tan(0.0007272205216625));
 const sizeMultiplier = sessionStorage.getItem("ratio");
 let numCorrect = 0;
 let numTested = 0;
