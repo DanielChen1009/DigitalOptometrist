@@ -47,7 +47,6 @@ class Session {
         } else {
             session.startCamera().then(stream => {
                 streamOn = stream;
-                $("#nextbutton").prop("disabled", false);
                 recognition.start();
             });
         }
@@ -124,6 +123,9 @@ class Session {
         context.strokeRect(face.x, face.y, face.width, face.height);
         let percentage = 100 * face.height / video.videoHeight;
         this.percentages.push(percentage);
+        if (this.percentages.length >= 20) {
+            $("#nextbutton").prop("disabled", false);
+        }
         distFromCamera = this.percentageToInches(this.rollingAverage(20)).toFixed(1);
         sessionStorage.setItem("DistFromCamera", distFromCamera);
         document.querySelector('#distance').textContent = distFromCamera + " inches";
