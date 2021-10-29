@@ -1,4 +1,6 @@
-window.onload = init;
+$(document).ready(init);
+
+const state = new State();
 let recognition;
 let result = null;
 let prev = -1;
@@ -14,12 +16,12 @@ const wordCalib = [
     ["down", "dumb", "tongue", "thumb", "done", "dong"]
 ];
 const distMultiplier = 1 / (2 * Math.tan(0.0007272205216625));
-const sizeMultiplier = sessionStorage.getItem("ratio");
+const sizeMultiplier = state.ratio();
 let numCorrect = 0;
 let numTested = 0;
 let currSize = 250;
 let end = false;
-const distFromCamera = sessionStorage.getItem("DistFromCamera");
+const distFromCamera = state.distFromCamera();
 let ind;
 let myInterval;
 
@@ -76,9 +78,9 @@ class LetterTester {
             clearInterval(myInterval);
             let actualSize = currSize * sizeMultiplier;
             let subtendDist = actualSize * distMultiplier;
-            sessionStorage.setItem("result", subtendDist.toString());
+            state.result(subtendDist.toString());
             result = null;
-            window.location.href='/results';
+            window.location.href='/results?' + state.toString();
         } else if (result && num === 1 && numIncorrect === 0) {
             clearInterval(myInterval);
             letterTester.testLetters();

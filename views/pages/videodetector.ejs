@@ -59,6 +59,9 @@
         }
     </style>
 
+    <script src="js/state.js">
+    </script>
+
     <script src="https://webrtc.github.io/adapter/adapter-latest.js">
     </script>
 
@@ -69,11 +72,6 @@
     </script>
 
     <script src="js/videoDetector.js">
-    </script>
-
-    <script>
-        let session;
-        window.onload = init;
     </script>
 </head>
 <body>
@@ -99,7 +97,7 @@
                 </div>
             </div>
             <div class="buttondiv">
-                <button id="nextbutton" class="btn btn-primary mybutton" disabled onclick="window.location.href='../testing';">
+                <button id="nextbutton" class="btn btn-primary mybutton" disabled onclick="nextPage();">
                     NEXT
                 </button>
             </div>

@@ -1,4 +1,6 @@
-window.onload = init;
+$(document).ready(init);
+
+const state = new State();
 
 let conversion = [
     [2, 0], [20/15, -0.03], [20/20, -0.06125],
@@ -20,14 +22,14 @@ function init() {
     }
     $("#results").text(visualAcuity);
 
-    console.log(sessionStorage.getItem("DistFromCamera"));
-    console.log(sessionStorage.getItem("result") / 12);
+    console.log(state.distFromCamera());
+    console.log(state.result() / 12);
 }
 
 function convertToDiopters() {
-    let testingDist = sessionStorage.getItem("DistFromCamera") / 12;
+    let testingDist = state.distFromCamera() / 12;
     testingDist = testingDist.toFixed(2);
-    let resultDist = sessionStorage.getItem("result") / 12
+    let resultDist = state.result() / 12
     resultDist = resultDist.toFixed(2);
     let ratio = testingDist / resultDist;
     for (let i = 1; i < conversion.length; i++) {

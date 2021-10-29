@@ -1,3 +1,6 @@
+$(document).ready(init);
+
+const state = new State();
 let msg = new SpeechSynthesisUtterance();
 const calibration = [12, 24, 30, 34, 37, 38.5, 39, 40, 41, 42, 45]
 let distFromCamera;
@@ -26,7 +29,7 @@ catch(e) {
 function init() {
     session = new Session();
     session.start();
-    console.log(sessionStorage.getItem("ratio"));
+    console.log(state.distFromCamera());
 }
 
 class Session {
@@ -127,9 +130,11 @@ class Session {
             $("#nextbutton").prop("disabled", false);
         }
         distFromCamera = this.percentageToInches(this.rollingAverage(20)).toFixed(1);
-        sessionStorage.setItem("DistFromCamera", distFromCamera);
+        state.distFromCamera(distFromCamera);
         document.querySelector('#distance').textContent = distFromCamera + " inches";
     }
 }
 
-
+function nextPage() {
+    window.location.href='../testing?' + state.toString();
+}

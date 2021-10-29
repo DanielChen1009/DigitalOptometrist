@@ -1,7 +1,9 @@
-window.onload = init;
+$(document).ready(init);
+
 let currWidth = 400;
 let increaseTimer;
 let decreaseTimer;
+const state = new State();
 
 function init() {
     document.addEventListener("keydown", (event) => {
@@ -43,10 +45,8 @@ function changeSize(change) {
     card.prop("width", currWidth);
 }
 
-
-
 function nextPage() {
-    let ratio = 3.37/currWidth;
-    sessionStorage.setItem("ratio", ratio.toString());
-    window.location.href='/videodetector';
+    let ratio = 3.37 / currWidth;
+    state.ratio(ratio);
+    window.location.href='/videodetector?' + state.toString();
 }
