@@ -6,6 +6,21 @@
         .nextbutton {
             width: 100%;
         }
+
+        .instructions {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 15px;
+            font-weight: bolder;
+            text-align: center;
+        }
     </style>
     <script src="js/state.js"></script>
     <script>
@@ -20,16 +35,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <p style="font-size: 20px; font-weight: bolder; text-align: center">
-                This program only works with Google Chrome
-            </p>
             <img src="/images/letters/Right-E.svg" class="center-block" style="width: 300px" alt="E image" />
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-
-            <p id="instructions" style="text-align: center">
+            <p class="instructions">
                 Welcome to Digital Optometrist! This tool conducts tests to help you estimate your degree of nearsightedness. It doesn't replace your real optometrist, but it can tell you whether you should visit one!
             </p>
         </div>
@@ -39,6 +50,13 @@
             <button id="nextbutton" class="btn btn-primary nextbutton" onclick="window.location.href='/calibrations?started=1';">
                 Get Started!
             </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <p class="disclaimer">
+                This website only works with Google Chrome.
+            </p>
         </div>
     </div>
 </div>
