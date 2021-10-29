@@ -1,6 +1,6 @@
 $(document).ready(init);
 
-const state = new State();
+let state;
 let msg = new SpeechSynthesisUtterance();
 const calibration = [12, 24, 30, 34, 37, 38.5, 39, 40, 41, 42, 45]
 let distFromCamera;
@@ -27,6 +27,7 @@ catch(e) {
 }
 
 function init() {
+    state = new State();
     session = new Session();
     session.start();
     console.log(state.distFromCamera());

@@ -7,7 +7,12 @@
             width: 100%;
         }
     </style>
-    <title></title>
+    <script src="js/state.js"></script>
+    <script>
+        $(document).ready(() => {
+            new State();
+        });
+    </script>
 </head>
 <body>
 <%- include('../partials/header', {title: ""}); %>
@@ -31,7 +36,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <button id="nextbutton" class="btn btn-primary nextbutton" onclick="window.location.href='/calibrations';">
+            <button id="nextbutton" class="btn btn-primary nextbutton" onclick="window.location.href='/calibrations?started=1';">
                 Get Started!
             </button>
         </div>

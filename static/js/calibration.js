@@ -1,11 +1,12 @@
 $(document).ready(init);
 
+let state;
 let currWidth = 400;
 let increaseTimer;
 let decreaseTimer;
-const state = new State();
 
 function init() {
+    state = new State();
     document.addEventListener("keydown", (event) => {
         if(increaseTimer) return;
         if(event.code === "ArrowRight" || event.code === "ArrowUp") {

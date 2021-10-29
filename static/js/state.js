@@ -8,6 +8,26 @@
 class State {
     constructor() {
         this.params = new URLSearchParams(document.location.search);
+        $("#nav-screen").hide();
+        $("#nav-dist").hide();
+        $("#nav-exam").hide();
+        $("#nav-results").hide();
+
+        if (this.params.has("started")) {
+            $("#nav-screen").show();
+        }
+        else if (window.location.pathname !== "/") {
+            window.location.href = "/";
+        }
+        if (this.params.has("ratio")) {
+            $("#nav-dist").show();
+        }
+        if (this.params.has("distance")) {
+            $("#nav-exam").show();
+        }
+        if (this.params.has("result")) {
+            $("#nav-results").show();
+        }
     }
 
     // The calibration data from the screen calibration page.

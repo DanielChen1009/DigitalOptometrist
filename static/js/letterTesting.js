@@ -1,6 +1,6 @@
 $(document).ready(init);
 
-const state = new State();
+let state;
 let recognition;
 let result = null;
 let prev = -1;
@@ -16,12 +16,12 @@ const wordCalib = [
     ["down", "dumb", "tongue", "thumb", "done", "dong"]
 ];
 const distMultiplier = 1 / (2 * Math.tan(0.0007272205216625));
-const sizeMultiplier = state.ratio();
+let sizeMultiplier;
 let numCorrect = 0;
 let numTested = 0;
 let currSize = 250;
 let end = false;
-const distFromCamera = state.distFromCamera();
+let distFromCamera;
 let ind;
 let myInterval;
 
@@ -37,6 +37,9 @@ catch(e) {
 }
 
 function init() {
+    state = new State();
+    sizeMultiplier = state.ratio();
+    distFromCamera = state.distFromCamera();
     letterTester = new LetterTester();
     letterTester.initializeRecognition();
     letterTester.testLetters();
