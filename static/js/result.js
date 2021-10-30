@@ -15,7 +15,7 @@ let conversion = [
 function init() {
     let recText = $("#recommendation");
     let visualAcuity = convertToDiopters()
-    if (visualAcuity <= -0.75 || visualAcuity === "< -7.5") {
+    if (visualAcuity <= -0.75 || visualAcuity === "< -15") {
         recText.text("We recommend that you go see an optometrist.");
     } else {
         recText.text("We do not think that a visit to the optometrist's office is necessary.")

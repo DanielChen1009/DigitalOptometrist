@@ -127,12 +127,14 @@ class Session {
         context.strokeRect(face.x, face.y, face.width, face.height);
         let percentage = 100 * face.height / video.videoHeight;
         this.percentages.push(percentage);
-        if (this.percentages.length >= 20) {
-            $("#nextbutton").prop("disabled", false);
-        }
         distFromCamera = this.percentageToInches(this.rollingAverage(20)).toFixed(1);
         state.distFromCamera(distFromCamera);
         document.querySelector('#distance').textContent = distFromCamera + " inches";
+        if (this.percentages.length >= 20) {
+            $("#nextbutton").prop("disabled", false);
+        } else {
+            document.querySelector('#distance').textContent = "PLEASE WAIT"
+        }
     }
 }
 
