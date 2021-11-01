@@ -1,7 +1,7 @@
 $(document).ready(init);
 
 let state;
-let currWidth = 400;
+let currWidth = 475;
 let increaseTimer;
 let decreaseTimer;
 

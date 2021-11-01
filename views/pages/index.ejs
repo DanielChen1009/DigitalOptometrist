@@ -10,14 +10,15 @@
         .instructions {
             margin-top: 30px;
             margin-bottom: 30px;
-            font-size: 20px;
+            font-size: 25px;
             font-weight: bolder;
             text-align: center;
         }
 
         .disclaimer {
             margin-top: 30px;
-            font-size: 15px;
+            font-size: 20px;
+            font-style: italic;
             font-weight: bolder;
             text-align: center;
         }
@@ -32,21 +33,21 @@
 <body>
 <%- include('../partials/header', {title: ""}); %>
 
-<div class="container">
+<div class="container" style="margin-top: 100px">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <img src="/images/letters/Right-E.svg" class="center-block" style="width: 300px" alt="E image" />
+        <div class="col-md-10 col-md-offset-1">
+            <img src="/images/letters/Right-E.svg" class="center-block" style="width: 200px" alt="E image" />
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <p class="instructions">
                 Welcome to Digital Optometrist! This tool conducts tests to help you estimate your degree of nearsightedness. It doesn't replace your real optometrist, but it can tell you whether you should visit one!
             </p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <button id="nextbutton" class="btn btn-primary nextbutton" onclick="window.location.href='/calibrations?started=1';">
                 Get Started!
             </button>

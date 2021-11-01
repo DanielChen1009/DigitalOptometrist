@@ -1,5 +1,6 @@
 $(document).ready(init);
 
+let testLeft = true;
 let state;
 let recognition;
 let result = null;
@@ -71,6 +72,15 @@ class LetterTester {
         });
     }
 
+    reset() {
+        result = null;
+        numIncorrect = 0;
+        numCorrect = 0;
+        numTested = 0;
+        currSize = 250;
+        letterTester.testLetters();
+    }
+
     handleInput(num) {
         if (result && num === 0) {
             clearInterval(myInterval);
@@ -81,9 +91,16 @@ class LetterTester {
             clearInterval(myInterval);
             let actualSize = currSize * sizeMultiplier;
             let subtendDist = actualSize * distMultiplier;
-            state.result(subtendDist.toString());
             result = null;
-            window.location.href='/results?' + state.toString();
+            if (testLeft) {
+                state.resultLeft(subtendDist.toString());
+                this.reset();
+                $("#italicized").text("left eye");
+                testLeft = false;
+            } else {
+                state.resultRight(subtendDist.toString());
+                window.location.href = '/results?' + state.toString();
+            }
         } else if (result && num === 1 && numIncorrect === 0) {
             clearInterval(myInterval);
             letterTester.testLetters();

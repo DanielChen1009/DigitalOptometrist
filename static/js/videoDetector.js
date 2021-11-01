@@ -129,7 +129,7 @@ class Session {
         this.percentages.push(percentage);
         distFromCamera = this.percentageToInches(this.rollingAverage(20)).toFixed(1);
         state.distFromCamera(distFromCamera);
-        document.querySelector('#distance').textContent = distFromCamera + " inches";
+        document.querySelector('#distance').textContent = "Your distance is: " + distFromCamera + " inches";
         if (this.percentages.length >= 20) {
             $("#nextbutton").prop("disabled", false);
         } else {

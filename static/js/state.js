@@ -43,9 +43,14 @@ class State {
     }
 
     // The result data from the testing page.
-    result(value) {
-        if (value === undefined) return this.params.get("result");
-        this.params.set("result", value);
+    resultLeft(value) {
+        if (value === undefined) return this.params.get("resultLeft");
+        this.params.set("resultLeft", value);
+    }
+
+    resultRight(value) {
+        if (value === undefined) return this.params.get("resultRight");
+        this.params.set("resultRight", value);
     }
 
     toString() {

@@ -14,22 +14,31 @@ let conversion = [
 
 function init() {
     let recText = $("#recommendation");
-    let visualAcuity = convertToDiopters()
-    if (visualAcuity <= -0.75 || visualAcuity === "< -15") {
-        recText.text("We recommend that you go see an optometrist.");
+    let visualAcuity = [convertToDiopters(state.resultLeft() / 12), convertToDiopters(state.resultRight() / 12)]
+
+    let text = "< -15 (1500)";
+    if (visualAcuity[0] !== "< -15") text = "" + visualAcuity[0] + " (" + -visualAcuity[0] * 100 + ")";
+    console.log(text)
+    $("#resultleft").text(text);
+
+    text = "< -15 (1500)";
+    if (visualAcuity[1] !== "< -15") text = "" + visualAcuity[1] + " (" + -visualAcuity[1] * 100 + ")";
+    console.log(text)
+    $("#resultright").text(text);
+
+    if (visualAcuity[0] <= -0.75 || visualAcuity[0] === "< -15" || visualAcuity[1] <= -0.75 || visualAcuity[1] === "< -15") {
+        recText.text("The Digital Optometrist recommends that you go see a certified optometrist.");
     } else {
-        recText.text("We do not think that a visit to the optometrist's office is necessary.")
+        recText.text("The Digital Optometrist does not think that a visit to the optometrist's office is necessary.")
     }
-    $("#results").text(visualAcuity);
 
     console.log(state.distFromCamera());
     console.log(state.result() / 12);
 }
 
-function convertToDiopters() {
+function convertToDiopters(resultDist) {
     let testingDist = state.distFromCamera() / 12;
     testingDist = testingDist.toFixed(2);
-    let resultDist = state.result() / 12
     resultDist = resultDist.toFixed(2);
     let ratio = testingDist / resultDist;
     for (let i = 1; i < conversion.length; i++) {
@@ -44,5 +53,5 @@ function convertToDiopters() {
             }
         }
     }
-    return "< -7.5"
+    return "< -15"
 }
