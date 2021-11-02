@@ -133,7 +133,7 @@ class Session {
         if (this.percentages.length >= 20) {
             $("#nextbutton").prop("disabled", false);
         } else {
-            document.querySelector('#distance').textContent = "PLEASE WAIT"
+            document.querySelector('#distance').textContent = "Your distance is being measured. Please wait..."
         }
     }
 }
