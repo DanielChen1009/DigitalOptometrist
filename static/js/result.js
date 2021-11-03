@@ -33,7 +33,6 @@ function init() {
     }
 
     console.log(state.distFromCamera());
-    console.log(state.result() / 12);
 }
 
 function convertToDiopters(resultDist) {
@@ -44,7 +43,7 @@ function convertToDiopters(resultDist) {
     for (let i = 1; i < conversion.length; i++) {
         let fir = conversion[i - 1][0];
         let sec = conversion[i][0];
-        let diff = conversion[i - 1][1] - conversion[i][1];
+        let diff = conversion[i - 1][0] - conversion[i][0];
         if (ratio <= fir && ratio > sec) {
             if (ratio <= fir + diff) {
                 return conversion[i - 1][1] * 2;
@@ -53,5 +52,6 @@ function convertToDiopters(resultDist) {
             }
         }
     }
+    if (ratio > 2) return 0;
     return "< -15"
 }
