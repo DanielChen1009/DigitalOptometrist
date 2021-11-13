@@ -89,24 +89,32 @@ class LetterTester {
             result = null;
         } else if (result && num === 1 && numIncorrect === 1) {
             clearInterval(myInterval);
-            let actualSize = currSize * sizeMultiplier;
-            let subtendDist = actualSize * distMultiplier;
-            result = null;
-            if (testLeft) {
-                state.resultLeft(subtendDist.toString());
-                this.reset();
-                $("#italicized").text("left eye");
-                testLeft = false;
-            } else {
-                state.resultRight(subtendDist.toString());
-                window.location.href = '/results?' + state.toString();
-            }
+            this.finishTest();
         } else if (result && num === 1 && numIncorrect === 0) {
             clearInterval(myInterval);
             letterTester.testLetters();
             result = null;
             numIncorrect++;
         }
+    }
+
+    finishTest() {
+        let subtendDist = this.calculateDist()
+        result = null;
+        if (testLeft) {
+            state.resultLeft(subtendDist.toString());
+            this.reset();
+            $("#italicized").text("left eye");
+            testLeft = false;
+        } else {
+            state.resultRight(subtendDist.toString());
+            window.location.href = '/results?' + state.toString();
+        }
+    }
+
+    calculateDist() {
+        let actualSize = currSize * sizeMultiplier;
+        return actualSize * distMultiplier;
     }
 
     initializeRecognition() {
@@ -158,6 +166,10 @@ class LetterTester {
     }
 
     testLetters() {
+        if (this.calculateDist() <= state.distFromCamera()) {
+            clearInterval(myInterval);
+            this.finishTest()
+        }
         let correct = $("#correct");
         let incorrect = $("#incorrect")
         correct.text(numCorrect + "/4");
