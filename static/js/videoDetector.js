@@ -31,6 +31,7 @@ function init() {
     session = new Session();
     session.start();
     console.log(state.distFromCamera());
+    state.distFromCamera(-1);
 }
 
 class Session {
@@ -39,6 +40,12 @@ class Session {
     }
 
     start() {
+        let checkManualInput = setInterval(() => {
+            if (document.getElementById("manualdist").value) {
+                $("#nextbutton").prop("disabled", false);
+                clearInterval(checkManualInput);
+            }
+        }, 200);
         let streamOn = null;
         let canvas = document.getElementById('canvas');
         let context = canvas.getContext('2d');
@@ -139,5 +146,7 @@ class Session {
 }
 
 function nextPage() {
+    if(document.getElementById("manualdist").value)
+        state.distFromCamera(document.getElementById("manualdist").value);
     window.location.href='../testing?' + state.toString();
 }

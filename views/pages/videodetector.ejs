@@ -86,13 +86,17 @@
             <canvas id="canvas" width="640" height="480"></canvas>
         </div>
         <div class="col-md-4">
-            <div style="font-size: 20px; padding: 20px; background-color:white; margin-top: 20px">
+            <div style="font-size: 18px; padding: 20px; background-color:white; margin-top: 20px">
                 <p id="instructions">
                     Position your face to be completely in the video. We recommend that you stay between 20 to 40 inches away from the computer.
                     <br>
                     Please wait until the number has stabilized before moving on.
                 </p>
                 <code id="distance" style="font-size: 30px; color: black; background-color: white;">Your distance is being measured. Please wait...</code>
+                <p>
+                    If you have trouble taking your distance or your camera does not function, input your distance manually below in inches.
+                </p>
+                <input type="number" id="manualdist" placeholder="Manual Distance Input"> <br>
                 <div class="buttondiv">
                     <button id="nextbutton" class="btn btn-primary mybutton" disabled onclick="nextPage();">
                         NEXT

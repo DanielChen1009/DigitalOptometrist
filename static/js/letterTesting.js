@@ -166,10 +166,6 @@ class LetterTester {
     }
 
     testLetters() {
-        if (this.calculateDist() <= state.distFromCamera()) {
-            clearInterval(myInterval);
-            this.finishTest()
-        }
         let correct = $("#correct");
         let incorrect = $("#incorrect")
         correct.text(numCorrect + "/4");
@@ -188,6 +184,10 @@ class LetterTester {
             console.log("Subtending Distance in Feet: " + (subtendDist / 12));
             console.log("Visual Acuity: " + (distFromCamera / 12) + "/" + (subtendDist / 12));
             console.log("Passed Level")
+            if (this.calculateDist() <= state.distFromCamera()) {
+                clearInterval(myInterval);
+                this.finishTest()
+            }
         }
         numTested++;
         ind = Math.floor(Math.random() * 4);
@@ -200,7 +200,6 @@ class LetterTester {
 
         element.attr("src", "images/letters/" + letter + "-E.svg");
         element.attr("width", currSize);
-        element.attr("height", currSize);
         console.log(currSize * sizeMultiplier);
         myInterval = setInterval(function () {
             let num = letterTester.testDirection(ind, result);
