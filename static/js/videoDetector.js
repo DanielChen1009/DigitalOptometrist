@@ -136,11 +136,15 @@ class Session {
         this.percentages.push(percentage);
         distFromCamera = this.percentageToInches(this.rollingAverage(20)).toFixed(1);
         state.distFromCamera(distFromCamera);
-        document.querySelector('#distance').textContent = "Your distance is: " + distFromCamera + " inches";
+        if(distFromCamera != 0) {
+            document.querySelector('#distance').textContent = distFromCamera + " inches";
+            console.log(distFromCamera);
+        }
+        document.querySelector('#top').textContent = "Your distance is:"
         if (this.percentages.length >= 20) {
             $("#nextbutton").prop("disabled", false);
         } else {
-            document.querySelector('#distance').textContent = "Your distance is being measured. Please wait..."
+            document.querySelector('#top').textContent = "Your distance is being measured. Please wait..."
         }
     }
 }
