@@ -7,7 +7,7 @@ let decreaseTimer;
 let msg = new SpeechSynthesisUtterance();
 
 function init() {
-    msg.text = "Place a standard sized ID or credit card up against this frame and use up or down keys to match the sizes";
+    msg.text = "Place a standard sized ID or credit card up against this frame and use up or down keys to match the size";
     window.speechSynthesis.speak(msg);
     state = new State();
     document.addEventListener("keydown", (event) => {
