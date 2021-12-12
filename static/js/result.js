@@ -2,6 +2,8 @@ $(document).ready(init);
 
 const state = new State();
 
+let msg = new SpeechSynthesisUtterance();
+
 let conversion = [
     [2, 0], [20/15, 0], [20/20, -0.06],
     [20/25, -0.25], [20/30, -0.5], [20/40, -0.75],
@@ -13,6 +15,8 @@ let conversion = [
 ];
 
 function init() {
+    msg.text = "All done! You can put your glasses back on, if you need them";
+    window.speechSynthesis.speak(msg);
     let recText = $("#recommendation");
     let visualAcuity = [convertToDiopters(state.resultLeft() / 12), convertToDiopters(state.resultRight() / 12)]
 

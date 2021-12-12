@@ -6,6 +6,9 @@ const calibration = [12, 24, 30, 34, 37, 38.5, 39, 40, 41, 42, 45]
 let distFromCamera;
 
 try {
+    msg.text = "Sit in a brightly lit place. Position your face to be completely in the video. We recommend that you stay between 20 to 40 inches away from the computer. " +
+        "Please wait until the number has stabilized before moving on.";
+    window.speechSynthesis.speak(msg);
     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SpeechRecognition();
     recognition.onend = () => {
@@ -152,5 +155,6 @@ class Session {
 function nextPage() {
     if(document.getElementById("manualdist").value)
         state.distFromCamera(document.getElementById("manualdist").value);
+    window.speechSynthesis.cancel();
     window.location.href='../testing?' + state.toString();
 }

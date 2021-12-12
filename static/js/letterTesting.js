@@ -38,6 +38,8 @@ catch(e) {
 }
 
 function init() {
+    msg.text = "Please cover your right eye";
+    window.speechSynthesis.speak(msg);
     state = new State();
     sizeMultiplier = state.ratio();
     distFromCamera = state.distFromCamera();
@@ -102,12 +104,16 @@ class LetterTester {
         let subtendDist = this.calculateDist()
         result = null;
         if (testLeft) {
+            window.speechSynthesis.cancel();
             state.resultLeft(subtendDist.toString());
             this.reset();
             $("#italicized").text("left eye");
             testLeft = false;
+            msg.text = "Now cover your left eye";
+            window.speechSynthesis.speak(msg);
         } else {
             state.resultRight(subtendDist.toString());
+            window.speechSynthesis.cancel();
             window.location.href = '/results?' + state.toString();
         }
     }

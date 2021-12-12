@@ -4,8 +4,11 @@ let state;
 let currWidth = 475;
 let increaseTimer;
 let decreaseTimer;
+let msg = new SpeechSynthesisUtterance();
 
 function init() {
+    msg.text = "Place a standard sized ID or credit card up against this frame and use up or down keys to match the sizes";
+    window.speechSynthesis.speak(msg);
     state = new State();
     document.addEventListener("keydown", (event) => {
         if(increaseTimer) return;
@@ -49,5 +52,6 @@ function changeSize(change) {
 function nextPage() {
     let ratio = 3.37 / currWidth;
     state.ratio(ratio);
+    window.speechSynthesis.cancel();
     window.location.href='/videodetector?' + state.toString();
 }
