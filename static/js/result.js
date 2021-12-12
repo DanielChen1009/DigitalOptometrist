@@ -32,8 +32,12 @@ function init() {
 
     if (visualAcuity[0] <= -0.75 || visualAcuity[0] === "< -15" || visualAcuity[1] <= -0.75 || visualAcuity[1] === "< -15") {
         recText.text("The Digital Optometrist recommends that you go see a certified optometrist.");
+        msg.text = "The Digital Optometrist recommends that you go see a certified optometrist.";
+        window.speechSynthesis.speak(msg);
     } else {
         recText.text("The Digital Optometrist does not think that a visit to the optometrist's office is necessary.")
+        msg.text = "The Digital Optometrist does not think that a visit to the optometrist's office is necessary.";
+        window.speechSynthesis.speak(msg);
     }
 
     console.log(state.distFromCamera());
